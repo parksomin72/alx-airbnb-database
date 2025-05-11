@@ -27,4 +27,5 @@ This schema defines the database design for the Airbnb Clone project, based on a
 ---
 
 **Author**: _parksomin72_
+##
 **Repo**: [alx-airbnb-database](https://github.com/parksomin72/alx-airbnb-database)
