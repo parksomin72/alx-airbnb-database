@@ -7,31 +7,31 @@
 ## 🔁 Normalization Process
 
 ### 1. **First Normal Form (1NF)**
-**Rule**:  
-- Each table has a primary key.  
-- All attributes contain only atomic (indivisible) values.  
+**Rule**:
+- Each table has a primary key.
+- All attributes contain only atomic (indivisible) values.
 - No repeating groups or arrays.
 
-✅ **Satisfied**:  
+✅ **Satisfied**:
 All attributes in `User`, `Property`, `Booking`, `Payment`, `Review`, and `Message` tables hold atomic values and have primary keys.
 
 ---
 
 ### 2. **Second Normal Form (2NF)**
-**Rule**:  
-- Meet all requirements of 1NF.  
-- All non-key attributes must depend on the entire primary key (for composite keys).  
+**Rule**:
+- Meet all requirements of 1NF.
+- All non-key attributes must depend on the entire primary key (for composite keys).
 - No partial dependencies allowed.
 
-✅ **Satisfied**:  
-- All tables use a single-attribute primary key (`UUID`), so partial dependency is not a concern.  
+✅ **Satisfied**:
+- All tables use a single-attribute primary key (`UUID`), so partial dependency is not a concern.
 - Each non-key attribute depends entirely on the primary key in its table.
 
 ---
 
 ### 3. **Third Normal Form (3NF)**
-**Rule**:  
-- Meet all requirements of 2NF.  
+**Rule**:
+- Meet all requirements of 2NF.
 - No transitive dependencies (non-key attributes depending on other non-key attributes).
 
 ✅ **Verified for All Tables**:
@@ -44,8 +44,9 @@ All attributes in `User`, `Property`, `Booking`, `Payment`, `Review`, and `Messa
 - All other fields describe the property directly.
 
 #### **Booking**
-- `user_id` and `property_id` are foreign keys.  
+- `user_id` and `property_id` are foreign keys.
 - Other fields depend directly on `booking_id`.
+- *Potential Redundancy (Avoided): In a less normalized design, including user details directly in `Booking` would be redundant. Our schema avoids this by referencing the `User` table.*
 
 #### **Payment**
 - `booking_id` is a foreign key.
@@ -58,6 +59,7 @@ All attributes in `User`, `Property`, `Booking`, `Payment`, `Review`, and `Messa
 #### **Message**
 - `sender_id`, `recipient_id` reference `User`.
 - Message content is tied to the `message_id`.
+- *Example of a 3NF Violation (Not Present): A transitive dependency would occur if `Message` included a `sender_role` attribute, which depends on `sender_id` and then on the `User` table's `role`. Our design avoids this.*
 
 ---
 
@@ -72,4 +74,4 @@ All attributes in `User`, `Property`, `Booking`, `Payment`, `Review`, and `Messa
 | Review     | ✅  | ✅  | ✅  |
 | Message    | ✅  | ✅  | ✅  |
 
-> **Conclusion**: The Airbnb database schema is already normalized to 3NF.
+> **Conclusion**: The Airbnb database schema is already normalized to 3NF. **Therefore, no adjustments to the database design were necessary to meet this requirement.**
