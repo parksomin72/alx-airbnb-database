@@ -1,5 +1,3 @@
--- Initial complex query: retrieve all bookings with user, property, and payment details
-
 SELECT
     b.id AS booking_id,
     b.start_date,
