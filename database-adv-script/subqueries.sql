@@ -1,6 +1,3 @@
--- subqueries.sql
-
--- 1. Find all properties where the average rating is greater than 4.0
 SELECT *
 FROM properties
 WHERE id IN (
@@ -10,7 +7,6 @@ WHERE id IN (
     HAVING AVG(rating) > 4.0
 );
 
--- 2. Find users who have made more than 3 bookings using a correlated subquery
 SELECT *
 FROM users u
 WHERE (
