@@ -9,7 +9,6 @@ SELECT
 FROM users
 FULL OUTER JOIN bookings ON users.id = bookings.user_id;
 
--- If FULL OUTER JOIN is not supported (like in MySQL), use:
 SELECT 
     users.id AS user_id,
     users.name AS user_name,
